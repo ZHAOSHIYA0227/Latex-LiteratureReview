@@ -1,7 +1,7 @@
 % !TEX root = ./notes_template.tex
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%% preamble %%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%---- preamble ----%
+%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[11pt,twoside]{book}
 \usepackage[mono=false]{libertine} % new linux font, ignore mono
 
@@ -51,7 +51,7 @@
 \usepackage[margin=2.3cm]{geometry}
 \headheight13.6pt
 
-%%%%%%%%%%%%%%%% thmtools %%%%%%%%%%%%%%%%%%%%%
+%---- thmtools ----%
 \usepackage{thmtools}
 \declaretheorem[numberwithin=chapter]{theorem}
 \declaretheorem[numberwithin=chapter]{axiom}
@@ -69,13 +69,14 @@
 \declaretheorem[numberwithin=chapter, style=definition]{construction}
 \declaretheorem[numberwithin=chapter, style=definition]{remark}
 \declaretheorem[numberwithin=chapter, style=remark]{question}
-%%%%%%%%%%%%%%%% thmtools %%%%%%%%%%%%%%%%%%%%%
+%---- END thmtools ----%
+
 \usepackage{changepage}
 \newenvironment{solution}
     {\renewcommand\qedsymbol{$\square$}\color{blue}\begin{adjustwidth}{0em}{2em}\begin{proof}[\textit Solution.~]}
     {\end{proof}\end{adjustwidth}}
 
-%%%%%%%%%%%%%%%% index %%%%%%%%%%%%%%%%%%%%%
+%---- index ----%
 \begin{filecontents}{index.ist}
 % https://tex.stackexchange.com/questions/65247/index-with-an-initial-letter-of-the-group
 headings_flag 1
@@ -85,9 +86,9 @@ delim_0 "\\nobreak\\dotfill"
 \end{filecontents}
 \newcommand{\myindex}[1]{\index{#1} \emph{#1}}
 \makeindex[columns=3, intoc, title=Alphabetical Index, options= -s index.ist]
-%%%%%%%%%%%%%%%% index %%%%%%%%%%%%%%%%%%%%%
+%---- END index ----%
 
-%%%%%%%%%%%%%%%% ToC %%%%%%%%%%%%%%%%%%%%%
+%---- ToC ----%
 % Link Chapter title to ToC: https://tex.stackexchange.com/questions/32495/linking-the-section-text-to-the-toc
 \usepackage[explicit]{titlesec}
 \titleformat{\chapter}[display]
@@ -96,7 +97,7 @@ delim_0 "\\nobreak\\dotfill"
 \titleformat{name=\chapter,numberless}
   {\normalfont\huge\bfseries}{}{-20pt}{\Huge#1}
 
-%%%%%%%%%%%%%%%%%%% fancyhdr %%%%%%%%%%%%%%%%%
+%---- fancyhdr ----%
 \usepackage{fancyhdr}
 \pagestyle{fancy} % enable fancy page style
 \renewcommand{\headrulewidth}{0.0pt} % comment if you want the rule
@@ -110,10 +111,10 @@ delim_0 "\\nobreak\\dotfill"
 \def\chaptermark#1{\markboth{\protect\hyper@linkstart{link}{\@currentHref}{Chapter \thechapter ~ #1}\protect\hyper@linkend}{}}
 \def\sectionmark#1{\markright{\protect\hyper@linkstart{link}{\@currentHref}{\thesection ~ #1}\protect\hyper@linkend}}
 \makeatother
-%%%%%%%%%%%%%%%%%%% fancyhdr %%%%%%%%%%%%%%%%%
+%---- END fancyhdr----%
 
 
-%%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
+%---- biblatex ----%
 \usepackage[doi=false,url=false,isbn=false,style=alphabetic,backend=biber,backref=true]{biblatex}
 \addbibresource{bib.bib}
 
@@ -159,28 +160,29 @@ delim_0 "\\nobreak\\dotfill"
         \iffieldundef{usera}{}{\space \printfield{usera}}
     }
 }
-%%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
+%---- END biblatex ----%
 
-%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+%---- glossaries ----%
 \input{./glossaries.tex}
-%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+%---- END glossaries ----%
 
-%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+%---- glossaries-extra ----%
 % \usepackage[record,abbreviations,symbols,stylemods={list,tree,mcols}]{glossaries-extra}
-%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+%---- END glossaries-extra ----%
 
 
 \input{./macros.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%% begin of document %%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%---- begin of document ----%
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\title{\bf \huge Study Notes}
-\author{Jue Xu}
-\date{Update on \today}
+\title{\bf \huge Literature review \\
+ \large Household Energy Use Modeling-- A summary on the methodology}
+\author{Shiya ZHAO}
+\date{Updated on \today}
 \maketitle
 \setcounter{tocdepth}{2}
 \setcounter{minitocdepth}{1} 
@@ -215,14 +217,12 @@ delim_0 "\\nobreak\\dotfill"
 	% \printunsrtglossary[type={symbols},title=List of Symbols,style=listgroup]
 	% \printunsrtglossary % main entry
 
-%%%%%%%%%%%%%%%Content%%%%%%%%%%%%%%%
+%---- Content ----%
 % \mainmatter % separat the number of toc and mainmatter
 \input{./chapter/preface.tex}
 
-\part{Mathematics}
-\input{./chapter/discrete_math.tex}
-
-\part{Computer Science}
+\part{Econometric Models}
+\input{./chapter/1_EconometricModels.tex}
 % \input{./chapter/complexity.tex}
 \input{./chapter/machine_learning.tex}
 % \input{./chapter/algorithms.tex}
@@ -237,7 +237,7 @@ delim_0 "\\nobreak\\dotfill"
 
 \backmatter
 
-%%%%%%%%%%%%%%% Reference %%%%%%%%%%%%%%%
+%---- Reference ----%
 
 \printbibliography[heading=bibintoc]
 \printindex
